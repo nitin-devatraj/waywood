@@ -1,18 +1,12 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const NavList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-`;
-
-const Link = styled.a`
+const Link = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-
     color: var(--color-grey-600);
     font-size: 1.6rem;
     font-weight: 500;
@@ -20,7 +14,6 @@ const Link = styled.a`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
@@ -44,3 +37,5 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+export default Link;
