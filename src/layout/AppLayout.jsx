@@ -14,6 +14,7 @@ import {
   HiOutlineHomeModern,
   HiOutlineUsers,
 } from "react-icons/hi2";
+import Container from "./Container";
 
 export default function AppLayout() {
   return (
@@ -60,7 +61,9 @@ export default function AppLayout() {
         </nav>
       </Sidebar>
       <Main>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </Main>
     </LayoutContainer>
   );
