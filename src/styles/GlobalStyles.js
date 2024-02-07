@@ -1,6 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+::-webkit-scrollbar {
+  width: 5px;             
+}
+
+::-webkit-scrollbar-track {
+  background: none;       
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #777;    
+}
+
 :root {
   /* Indigo */
   --color-brand-50: #eef2ff;
