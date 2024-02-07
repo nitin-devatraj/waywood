@@ -56,3 +56,46 @@ export async function createCabin(newCabin) {
 
   return data;
 }
+export async function editCabin(newCabin, id) {
+  const hasImagePath = newCabin.image?.startsWith?.(
+    import.meta.env.VITE_API_URL
+  );
+
+  const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
+    "/",
+    ""
+  );
+
+  const imagePath = hasImagePath
+    ? newCabin.image
+    : `${
+        import.meta.env.VITE_API_URL
+      }/storage/v1/object/public/cabin-images/${imageName}`;
+
+  const { data, error } = await supabase
+    .from("cabins")
+    .update({ ...newCabin, image: imagePath })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("cabin could not be created");
+  }
+
+  if (!hasImagePath) {
+    const { error: storageError } = await supabase.storage
+      .from("cabin-images")
+      .upload(imageName, newCabin.image);
+
+    if (storageError) {
+      await supabase.from("cabins").delete().eq("id", data.id);
+      console.error(storageError);
+      throw new Error(
+        "cabin image could not be uploaded & cabin was not created"
+      );
+    }
+  }
+
+  return data;
+}
