@@ -9,7 +9,7 @@ import Label from "../../ui/Label";
 import Textarea from "../../ui/Textarea";
 import { useCreateCabin } from "../../hooks/useCreateCabin";
 
-export default function CreateCabinForm() {
+export default function CreateCabinForm({ onCloseModal }) {
   const {
     register,
     handleSubmit,
@@ -23,11 +23,19 @@ export default function CreateCabinForm() {
   function onSubmit(data) {
     mutateCreateCabin(
       { ...data, image: data.image[0] },
-      { onSuccess: () => reset() }
+      {
+        onSuccess: () => {
+          reset();
+          onCloseModal?.();
+        },
+      }
     );
   }
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
         <Input
@@ -114,7 +122,11 @@ export default function CreateCabinForm() {
       </FormRow>
 
       <FormRow>
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isCreating}>Add cabin</Button>

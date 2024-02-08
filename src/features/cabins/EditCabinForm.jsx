@@ -9,7 +9,7 @@ import Label from "../../ui/Label";
 import Textarea from "../../ui/Textarea";
 import { useEditCabin } from "../../hooks/useEditCabin";
 
-export default function EditCabinForm({ cabinData }) {
+export default function EditCabinForm({ cabinData, onCloseModal }) {
   const { id: cabinId } = cabinData;
 
   const {
@@ -31,11 +31,19 @@ export default function EditCabinForm({ cabinData }) {
         editedCabinData: { ...data, image: image },
         id: cabinId,
       },
-      { onSuccess: () => reset() }
+      {
+        onSuccess: () => {
+          reset();
+          onCloseModal?.();
+        },
+      }
     );
   }
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
         <Input
@@ -118,7 +126,11 @@ export default function EditCabinForm({ cabinData }) {
       </FormRow>
 
       <FormRow>
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isEditing}>Edit cabin</Button>
