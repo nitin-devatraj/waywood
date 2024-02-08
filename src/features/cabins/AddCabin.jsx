@@ -1,28 +1,16 @@
-import { useState } from "react";
 import Button from "../../ui/Button";
 import CreateCabinForm from "./CreateCabinForm";
 import Modal from "../../layout/Modal";
-import { createPortal } from "react-dom";
 
 export default function AddCabin() {
-  const [showModal, setShowModal] = useState(false);
-
-  function closeModal() {
-    setShowModal(false);
-  }
-
   return (
-    <div>
-      <Button onClick={() => setShowModal((show) => !show)}>
-        add new cabin
-      </Button>
-      {showModal &&
-        createPortal(
-          <Modal onClose={closeModal}>
-            <CreateCabinForm onCloseModal={closeModal} />
-          </Modal>,
-          document.body
-        )}
-    </div>
+    <Modal>
+      <Modal.Open opens="cabin-form">
+        <Button>Add new cabin</Button>
+      </Modal.Open>
+      <Modal.Window name="cabin-form">
+        <CreateCabinForm />
+      </Modal.Window>
+    </Modal>
   );
 }

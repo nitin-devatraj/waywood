@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Overlay = styled.div`
+const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,4 +12,4 @@ const Overlay = styled.div`
   transition: all 0.5s;
 `;
 
-export default Overlay;
+export default ModalOverlay;
