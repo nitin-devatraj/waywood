@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import LogoContainer from "./LogoContainer";
-import Main from "./Main";
-import Logo from "./Logo";
-import LayoutContainer from "./LayoutContainer";
-import NavList from "./NavList";
-import Link from "./Link";
+import Header from "./app-layout-components/Header";
+import Sidebar from "./app-layout-components/Sidebar";
+import LogoContainer from "./app-layout-components/LogoContainer";
+import Main from "./app-layout-components/Main";
+import Logo from "./app-layout-components/Logo";
+import LayoutContainer from "./app-layout-components/LayoutContainer";
+import NavList from "./app-layout-components/NavList";
+import Link from "./app-layout-components/Link";
 import {
   HiOutlineCalendarDays,
   HiOutlineCog6Tooth,
@@ -14,7 +14,7 @@ import {
   HiOutlineHomeModern,
   HiOutlineUsers,
 } from "react-icons/hi2";
-import Container from "./Container";
+import Container from "./app-layout-components/Container";
 
 export default function AppLayout() {
   return (

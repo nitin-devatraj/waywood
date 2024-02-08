@@ -1,9 +1,9 @@
 import { useSettings } from "../../hooks/useSettings";
 import { useUpdateSetting } from "../../hooks/useUpdateSetting";
 import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
-import Label from "../../ui/Label";
+import FormRow from "../../ui/form-components/FormRow";
+import Input from "../../ui/form-components/Input";
+import Label from "../../ui/form-components/Label";
 import Spinner from "../../ui/Spinner";
 
 function UpdateSettingsForm() {

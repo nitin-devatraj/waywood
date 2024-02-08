@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
-import FileInput from "../../ui/FileInput";
+import FileInput from "../../ui/form-components/FileInput";
 import Form from "../../ui/Form";
-import Input from "../../ui/Input";
+import Input from "../../ui/form-components/Input";
 import Error from "./create-cabin-form-components/Error";
-import FormRow from "../../ui/FormRow";
-import Label from "../../ui/Label";
-import Textarea from "../../ui/Textarea";
+import FormRow from "../../ui/form-components/FormRow";
+import Label from "../../ui/form-components/Label";
+import Textarea from "../../ui/form-components/Textarea";
 import { useEditCabin } from "../../hooks/useEditCabin";
 
 export default function EditCabinForm({ cabinData, onCloseModal }) {
